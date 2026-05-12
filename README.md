@@ -1,1 +1,1 @@
-Trabalho A3 onde estamos desenvolvendo um sistema que utiliza da lógica LIFO
+#A3 da matéria de Estruturas de dados e Algoritmos do Professor Noriega
