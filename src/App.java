@@ -11,8 +11,8 @@ public class App {
         //sem borda
         splash.setUndecorated(true);       
         
-        //tamanho janela
-        splash.setSize(320, 110);
+        //tamanho janela (aumentei a altura pra caber a logo)
+        splash.setSize(400, 300);
         
         //centralizar
         splash.setLocationRelativeTo(null);
@@ -20,10 +20,40 @@ public class App {
         //layout da janela
         splash.setLayout(new BorderLayout());   
 
+        //painel do topo: logo + mensagem
+        JPanel painelTopo = new JPanel();
+        painelTopo.setLayout(new BoxLayout(painelTopo, BoxLayout.Y_AXIS));
+        painelTopo.setBackground(Color.WHITE); // fundo branco pra combinar
+
+        //carregar a imagem da logo
+        java.net.URL urlImagem = App.class.getResource("/imgs/ostrich.JPG");
+        if (urlImagem != null) {
+            ImageIcon iconeLogo = new ImageIcon(urlImagem);
+            //redimensionar a imagem pra não ficar gigante
+            Image imagemRedimensionada = iconeLogo.getImage().getScaledInstance(150, 100, Image.SCALE_SMOOTH);
+            JLabel labelLogo = new JLabel(new ImageIcon(imagemRedimensionada));
+            labelLogo.setAlignmentX(Component.CENTER_ALIGNMENT);
+            painelTopo.add(Box.createVerticalStrut(20));
+            painelTopo.add(labelLogo);
+        } else {
+            //se não encontrar a imagem, mostra um aviso no lugar
+            JLabel labelErro = new JLabel("Logo não encontrada", SwingConstants.CENTER);
+            labelErro.setAlignmentX(Component.CENTER_ALIGNMENT);
+            painelTopo.add(Box.createVerticalStrut(20));
+            painelTopo.add(labelErro);
+        }
+
         //mensagem splash 
         JLabel mensagem = new JLabel("Iniciando o sistema, aguarde...", SwingConstants.CENTER);
         mensagem.setFont(new Font("Arial", Font.BOLD, 14));
-        splash.add(mensagem, BorderLayout.CENTER);
+        mensagem.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        //montar o painel superior com espaçamentos
+        painelTopo.add(Box.createVerticalStrut(10));
+        painelTopo.add(mensagem);
+        painelTopo.add(Box.createVerticalStrut(10));
+
+        splash.add(painelTopo, BorderLayout.CENTER);
 
         //barra de loading encher
         JProgressBar progressBar = new JProgressBar(0, 100);
