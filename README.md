@@ -1,1 +1,1 @@
-#A3 da matéria de Estruturas de dados e Algoritmos do Professor Noriega
+Java Swing application that simulates a LIFO‑based warehouse. Each sector of the warehouse is a stack; the GUI lets users add and remove boxes with left/right clicks, visualises fill levels with a colour gradient and provides detailed stack information in a popup window. Built for a university data‑structures assignment (A3 Noriega).
